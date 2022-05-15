@@ -44,13 +44,11 @@
              width: 100%;
              gap: 20px;
          }
-         #result{
-            padding: 20px;
-            color: #000;
-            border-radius: 5px; 
-            border: 1px solid #000;
-            width: 200px;
-            text-align: center;
+         .show{
+             display: block;
+         }
+         .hidden{
+             display: none;
          }
          button{
              background-color: black;
@@ -59,20 +57,33 @@
              border-radius: 5px;
              padding: 20px;
              cursor: pointer;
-         }
+            }
+            
+        #result{
+            padding: 20px;
+            color: #000;
+            border-radius: 5px; 
+            border: 1px solid #000;
+            width: 200px;
+            text-align: center;
+        }
     </style>
 </head>
 
 <body>
     <div class="main">
         <div class="radios">
-            <div class="x">
-                <input class="radio" type="radio" name="radio" id="radio1" value="rr">
+            <div class="radio-group">
+                <input class="radio" type="radio" name="radio" id="radio1">
                 <label for="radio1">Function-RGB</label>
             </div>
-            <div class="x">
-                <input class="radio" type="radio" name="radio" id="radio2" value="vv">
+            <div class="radio-group">
+                <input class="radio" type="radio" name="radio" id="radio2">
                 <label for="radio2">Function-TEXT</label>
+                <div id="in_order" class="in-order">
+                    <input type="checkbox" name="" id="in_order_check" value="">
+                    <label id="lbl_in_order" for="">In order</label>
+                </div>
             </div>
         </div>
 
