@@ -1,53 +1,56 @@
 const body = document.querySelector('body');
 const button = document.querySelector('button');
-const colors = ['pink', 'blue','red', 'green', 'yellow','purple'];
+const colors = ['pink', 'blue','red', 'green', 'yellow','purple','brown','crimson','yellowgreen','orange'];
 const result = document.querySelector('#result');
 const radio1 = document.querySelector('#radio1');
 const radio2 = document.querySelector('#radio2');
-const inorder = document.querySelector('#in_order');
-const inorderCheck = document.querySelector('#in_order_check');
+const inOrder = document.querySelector('#in_order');
+const inOrderCheck = document.querySelector('#in_order_check');
 const lblInOrder = document.querySelector('#lbl_in_order');
 let func;
+let state=true;
 let number=0;
- 
-        // document.body.addEventListener('change', function (e) {
+func = changeBackgroundWithRGBColor();
+inOrder.classList.add('hidden');
+inOrderCheck.checked = false;
+radio1.checked = true;
+document.body.addEventListener('change', function (e) {
 
-        //     switch (e.target.id) {
-        //         case 'radio1':
-        //             func=changeBackgroundWithRGBColor();
-        //             break;
-        //         case 'radio2':
-        //             func=changeBackgroundWithTextColor();
-        //             break;
-        //     }
-        // });
+    switch (e.target.id) {
+        case 'radio1':
+            state=true;
+            inOrder.classList.remove('show');
+            inOrder.classList.add('hidden');
+            break;
+        case 'radio2':
+            state=false;
+            inOrder.classList.add('show');
+            inOrder.classList.remove('hidden');
+            break;
+    }
+});
 
-if(radio1.checked === true) {
-    func=changeBackgroundWithRGBColor;
-    inorder.classList.remove('show');
-    inorder.classList.add('hidden');
-
-}else if(radio2.checked === true) {
-    inorder.classList.add('show');
-    inorder.classList.remove('hidden');
-    func=changeBackgroundWithTextColor;
-    
-}
-button.addEventListener('click', func);
+button.addEventListener('click', function (e) {
+    if (state === true){
+        func = changeBackgroundWithRGBColor();
+    }else{
+        func = changeBackgroundWithTextColor();
+    }
+});
 
 
 function changeBackgroundWithTextColor() {
     let selectedNumber;
-    if(inorderCheck.checked === true){
+    if(inOrderCheck.checked === true){
        selectedNumber = number;
-       lblInOrder.innerHTML="In Order (" + number+")";
        console.log("order");
        number++;
+       lblInOrder.innerHTML="In Order (" + number+")";
        if(number >= colors.length){
            number = 0;
         }
     }else{
-        lblInOrder.innerHTML="In Order ";
+        lblInOrder.innerHTML="In Order";
         selectedNumber = Math.floor(Math.random()*colors.length);
         console.log("random");
     }
